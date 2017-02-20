@@ -7,12 +7,23 @@ import javax.swing.*;
 import java.awt.*;
 
 public class Graph extends JPanel {
+    int x;
+    int y;
+
     public Graph(){
         setBackground(Color.white);
     }
 
     public void paint (Graphics g){
-        g.drawLine(0,0,100,100);
-        g.setColor(Color.blue);
+        super.paint(g);
+        g.drawString(".", x, y);
+        g.setColor(Color.black);
+    }
+
+    public void setX(int a){
+        x = a;
+    }
+    public void setY(int a){
+        y = a;
     }
 }
