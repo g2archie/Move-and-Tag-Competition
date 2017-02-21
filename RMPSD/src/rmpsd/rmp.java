@@ -42,14 +42,14 @@ public class rmp {
         if (Line2D.linesIntersect(x1, y1, x2, y2, polygon_coordinates[polygon_vertex_from], polygon_coordinates[polygon_vertex_from+1], polygon_coordinates[polygon_vertex_to-1], polygon_coordinates[polygon_vertex_to]))
         {
             intersections++;
-            System.out.println(polygon_coordinates[polygon_vertex_from]+" " +polygon_coordinates[polygon_vertex_from+1]+" "+ polygon_coordinates[polygon_vertex_to-1]+" "+ polygon_coordinates[polygon_vertex_to]);
+          //  System.out.println(polygon_coordinates[polygon_vertex_from]+" " +polygon_coordinates[polygon_vertex_from+1]+" "+ polygon_coordinates[polygon_vertex_to-1]+" "+ polygon_coordinates[polygon_vertex_to]);
         }
         for(i=polygon_vertex_from;i<polygon_vertex_to-2;i+=2)
         {
             if (Line2D.linesIntersect(x1, y1, x2, y2, polygon_coordinates[i], polygon_coordinates[i+1], polygon_coordinates[i+2], polygon_coordinates[i+3]))
             {
                intersections++;
-               System.out.println(polygon_coordinates[i]+" " +polygon_coordinates[i+1]+" "+ polygon_coordinates[i+2]+" "+ polygon_coordinates[i+3]);
+//               System.out.println(polygon_coordinates[i]+" " +polygon_coordinates[i+1]+" "+ polygon_coordinates[i+2]+" "+ polygon_coordinates[i+3]);
             }
         }
       if(isIntersectionAtVerticle(x1,y1,x2,y2,polygon_vertex_from,polygon_vertex_to,polygon_coordinates)==1)
@@ -79,7 +79,7 @@ public  int isBlocked(double x1,double y1,double x2,double y2)
         {
             if (Polygon_Intersections(x1,y1,x2,y2,index[i],index[i+1]-1,coordinates)>0)
             {
-                System.out.println("Blocked!");
+                //System.out.println("Blocked!");
                 return 1;
             }
         }
@@ -178,15 +178,15 @@ public double[] getCoordinates(int p1)
         }
     }
     //Output the distance of two points without any obstacle present
-    for (int i=0;i<numOfPoints;i++)
-    {
-        for(int j=0;j<numOfPoints;j++)
-        {
-         if(mMatrix[i][j]!=INF)
-         {System.out.println("From "+i+ " to "+j+" is "+mMatrix[i][j]);}
-            //System.out.println("If not blocked, distance is "+ distance(coordinates[i*2],coordinates[i*2+1],coordinates[j*2],coordinates[j*2+1]));
-        }
-    }
+//    for (int i=0;i<numOfPoints;i++)
+//    {
+//        for(int j=0;j<numOfPoints;j++)
+//        {
+//         if(mMatrix[i][j]!=INF)
+//         {System.out.println("From "+i+ " to "+j+" is "+mMatrix[i][j]);}
+//            //System.out.println("If not blocked, distance is "+ distance(coordinates[i*2],coordinates[i*2+1],coordinates[j*2],coordinates[j*2+1]));
+//        }
+//    }
 
     for (int i = 0; i <numOfPoints; i++) {
         for (int j = 0;j < numOfPoints; j++) {
@@ -217,7 +217,7 @@ public double[] getCoordinates(int p1)
         }
     }
 
-    System.out.printf("floyd: \n");
+   /* System.out.printf("floyd: \n");
     for (int i = 0; i < numOfPoints; i++) {
         for (int j = 0; j <numOfPoints; j++)
              System.out.println("From "+i+" to "+j+" is "+ dist[i][j]);
@@ -230,6 +230,6 @@ public double[] getCoordinates(int p1)
             System.out.print(path[i][j]+" ");
         }
         System.out.println();
-    }
+    }*/
 }
 }
