@@ -77,7 +77,8 @@ public class Main extends JPanel{
             int ax = (int)transfer(coordinates, i, 0);
             int ay = (int)transfer(coordinates, i, 1);
             g.setFont(getFont().deriveFont(20f));
-            g.drawString(".",ax,ay);
+            g.drawOval(ax,ay,2,2);
+//            g.drawString(".",ax,ay);
             g.setColor(Color.red);
         }
 
