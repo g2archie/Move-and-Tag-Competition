@@ -16,12 +16,12 @@ import static java.lang.Math.sqrt;
  */
 public class rmp {
     private double[] coordinates;
-    private int[] index;
-    private double [][] mMatrix;
-    private int[][] path;
+    private final int[] index;
+    private final double [][] mMatrix;
+    private final int[][] path;
     double[][] dist;
-    private int length;
-    private int index_length;
+    private final int length;
+    private final int index_length;
     private static final int INF = Integer.MAX_VALUE;
     public rmp(double[] coordinates,int[] index)
     {
@@ -130,6 +130,10 @@ public double getShortestDistance(int p1,int p2)
 public int[] getShortestRoute(int p1,int p2)
 {
     int[] route=new int[length/2];
+    for (int i=0;i<route.length;i++)
+    {
+        route[i]=-1;
+    }
     route[0]=p1;int counter=1;
     int point=p1;
     while(point!=p2)

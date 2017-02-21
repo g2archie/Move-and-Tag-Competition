@@ -25,7 +25,9 @@ public class RMPSD {
       int route[]=newrmp.getShortestRoute(0, 2);
       for(int i=0;i<route.length;i++)
       {
-          System.out.print(route[i]+"-");
+          if(route[i]!=-1)
+          {System.out.print(route[i]+" ");}
+          else{break;}
       }
       System.out.println();
       double coordinate[]=newrmp.getCoordinates(11);
