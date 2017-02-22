@@ -7,6 +7,8 @@ package rmpsd;
 
 import java.awt.geom.Line2D;
 import static java.lang.Math.sqrt;
+import java.lang.reflect.Array;
+import java.util.ArrayList;
 
 
 
@@ -150,6 +152,94 @@ public double[] getCoordinates(int p1)
     point_coordinates[0]=coordinates[p1*2];
     point_coordinates[1]=coordinates[p1*2+1];
     return point_coordinates;
+}
+
+public void printResult(ArrayList<int[]> array,int number)
+{
+    int size=array.size();
+    int robotnumber=number;
+    int i,j;
+    int robot,move;
+    int result[][]=new int[robotnumber][robotnumber];
+    int arraylength[]=new int[robotnumber];
+    int position;
+    System.out.println(size);
+   // System.out.println(robotnumber);
+    for(i=0;i<robotnumber;i++)
+    {
+        for(j=0;j<robotnumber;j++)
+        {
+            result[i][j]=-1;
+        }
+    }
+    for (i=0;i<size;i++)
+    {
+        robot=array.get(i)[0];
+        move=array.get(i)[1];
+        System.out.println(robot+" "+move);
+        position=arraylength[robot];
+        result[robot][position]=move;
+        arraylength[robot]++;
+    }
+    for(i=0;i<robotnumber;i++)
+    {
+        for(j=0;j<robotnumber;j++)
+        {
+            System.out.print(result[i][j]+ " ");
+        }
+        System.out.println();
+    }
+    
+    for(i=0;i<robotnumber;i++)
+    {
+
+        for(j=0;j<robotnumber;j++)
+        {
+            if (result[i][j]==-1) {break;}
+            else
+            {
+                if (j==0){
+                    int route[]=getShortestRoute(i,result[i][0]);
+//                    for(int k=0;k<route.length;k++)
+//                    {
+//                        System.out.print(route[k]+" ");
+//                    }
+//                    System.out.println();
+                  // findPath(i,result[i][0]);
+                    for(int k=0;k<route.length;k++)
+                    {
+                        if(route[k]==-1){break;}
+                        if(k!=0){System.out.print(",");}
+                        double coor[]=getCoordinates(route[k]);
+                        double x=coor[0]; double y=coor[1];
+                        System.out.print("("+x+","+y+")");
+                        
+                    }
+                   // if(result[i][j+1]!=-1){System.out.print(",");}
+                }
+                   if(result[i][j+1]==-1)
+                   {
+                       break;
+                   }
+                   else
+                   { int route[]=getShortestRoute(result[i][j],result[i][j+1]);
+                     //findPath(result[i][j],result[i][j+1]);
+                     for(int k=0;k<route.length;k++)
+                    {
+                        if(route[k]==-1){break;}
+                        if(k!=0){System.out.print(",");
+                        double coor[]=getCoordinates(route[k]);
+                        double x=coor[0]; double y=coor[1];
+                        System.out.print("("+x+","+y+")");}
+                    }
+                }
+ 
+           
+        }
+    }
+   if(result[i][0]!=-1) System.out.print(";");
+}
+    System.out.println();
 }
         
  private void floyd() {
