@@ -12,7 +12,7 @@ public class Visualization extends JPanel{
     private final static String path = "/Users/fuxiaofeng/Desktop/questions.txt";
     private final static String path2 = "/Users/fuxiaofeng/Desktop/solutions.txt";
     //selection of the data
-    private final static int index = 10;
+    private final static int index = 3 - 1;
     private final static int index2 = 2;
     //size of the graph
     private final static int size = 2000;
@@ -28,6 +28,7 @@ public class Visualization extends JPanel{
     private ArrayList <Integer> divider =  new ArrayList<Integer>();
     private Double[] listarray;
     private Integer[] dividerarray;
+    private ArrayList <Double> a = new ArrayList<Double>();
 
     //initial Image
     public void paint(Graphics g) {
@@ -40,6 +41,9 @@ public class Visualization extends JPanel{
         for (int i = 0; i < coordinates.size(); i++){
             list.add(Double.parseDouble(coordinates.get(i)[0]));
             list.add(Double.parseDouble(coordinates.get(i)[1]));
+            a.add(Double.parseDouble(coordinates.get(i)[0]));
+            a.add(Double.parseDouble(coordinates.get(i)[1]));
+
         }
 
         if (haveObstacle){
@@ -58,7 +62,7 @@ public class Visualization extends JPanel{
         }
 
         if (haveObstacle){
-            divider.add(list.size());
+            divider.add(list.size() - 1);
         }
 
         listarray = (Double[])list.toArray(new Double[0]);
@@ -67,7 +71,7 @@ public class Visualization extends JPanel{
 
     //change the scale
     private double transfer(ArrayList <String[]> temp, int index, int position){
-       return Double.parseDouble(temp.get(index)[position]) * 40 + 300;
+       return Double.parseDouble(temp.get(index)[position]) * 50 + 300;
     }
 
     //draw initial coordinate in white color and others in red color
@@ -80,8 +84,9 @@ public class Visualization extends JPanel{
         for (int i = 0; i < coordinates.size(); i++){
             int ax = (int)transfer(coordinates, i, 0);
             int ay = (int)transfer(coordinates, i, 1);
-            g.setFont(getFont().deriveFont(20f));
             g.drawOval(ax,ay,2,2);
+
+            g.drawString((ax-300)/50 + "," + (ay-300)/50, ax, ay);
 //            g.drawString(".",ax,ay);
             g.setColor(Color.red);
         }
@@ -110,7 +115,7 @@ public class Visualization extends JPanel{
                      tempY = ay;
                  }
 
-                 if (j == temp.size() - 1){
+                 if (j == temp.size()){
                      g.drawLine(ax,ay,initX,initY);
                  }
              }
@@ -210,6 +215,10 @@ public class Visualization extends JPanel{
 
         getSolutions(0, text2);
         solutions.add(solution);
+
+        System.out.println("coordinates:" + a);
+        System.out.println("all:" + list);
+        System.out.println("index:" + divider);
     }
 
     //encoding solution part
