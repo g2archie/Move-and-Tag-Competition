@@ -187,8 +187,8 @@ public static void floyd() {
 
     // 初始化
     int length=coordinates.length/2;
-    int index_polygon=index[0];
-    int points[]=new int[length];
+   // int index_polygon=index[0];
+   int points[]=new int[length];
    
     for (int i=0;i<length;i++)
     {

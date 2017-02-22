@@ -6,13 +6,13 @@ import java.util.ArrayList;
 import java.awt.image.BufferedImage;
 import java.util.Random;
 
-public class Main extends JPanel{
+public class Visualization extends JPanel{
     //users variables
     //path of the data
     private final static String path = "/Users/fuxiaofeng/Desktop/questions.txt";
     private final static String path2 = "/Users/fuxiaofeng/Desktop/solutions.txt";
     //selection of the data
-    private final static int index = 0;
+    private final static int index = 10;
     private final static int index2 = 2;
     //size of the graph
     private final static int size = 2000;
@@ -22,10 +22,12 @@ public class Main extends JPanel{
     private ArrayList <String[]> coordinates = new ArrayList <String[]> ();
     private ArrayList <String[]>obstacle = new ArrayList <String[]>();
     private ArrayList <ArrayList> obstacles = new ArrayList <ArrayList> ();
-    private ArrayList <Double> list = new ArrayList<Double>();
-    private ArrayList <Integer> divider =  new ArrayList<Integer>();
     private ArrayList <String[]> solution = new ArrayList<String[]>();
     private ArrayList <ArrayList> solutions = new ArrayList<ArrayList>();
+    private ArrayList <Double> list = new ArrayList<Double>();
+    private ArrayList <Integer> divider =  new ArrayList<Integer>();
+    private Double[] listarray;
+    private Integer[] dividerarray;
 
     //initial Image
     public void paint(Graphics g) {
@@ -42,7 +44,6 @@ public class Main extends JPanel{
 
         if (haveObstacle){
             divider.add(list.size());
-            divider.add(0);
         }
 
         for (int i = 0; i < obstacles.size();i++){
@@ -57,13 +58,16 @@ public class Main extends JPanel{
         }
 
         if (haveObstacle){
-            divider.set(1, list.size());
+            divider.add(list.size());
         }
+
+        listarray = (Double[])list.toArray(new Double[0]);
+        dividerarray = (Integer[])divider.toArray(new Integer[0]);
     }
 
     //change the scale
     private double transfer(ArrayList <String[]> temp, int index, int position){
-       return Double.parseDouble(temp.get(index)[position]) * 20 + 300;
+       return Double.parseDouble(temp.get(index)[position]) * 40 + 300;
     }
 
     //draw initial coordinate in white color and others in red color
@@ -150,7 +154,7 @@ public class Main extends JPanel{
 
 
     //initial encoding from question and solution
-    private Main(){
+    private Visualization(){
         //**************Question part***************
         FileReader reader = new FileReader();
         ArrayList data = reader.read(path);
@@ -276,9 +280,23 @@ public class Main extends JPanel{
          }
      }
 
+//    public void test(){
+//        Integer[] array = new Integer[10];
+//        Integer[] testarray = new Integer[10];
+//
+//        for (int i = 0; i < testarray.length; i++){
+//            if (testarray[i][1] != -1){
+//                array[i][0] = testarray[i][0];
+//                array[i][1] = testarray[i][1];
+//            }
+//
+//        }
+//    }
+
+
     public static void main(String[] args) {
         JFrame frame = new JFrame();
-        frame.getContentPane().add(new Main());
+        frame.getContentPane().add(new Visualization());
         frame.setSize(size, size);
         frame.setVisible(true);
     }
