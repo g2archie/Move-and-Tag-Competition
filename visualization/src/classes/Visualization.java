@@ -16,7 +16,7 @@ public class Visualization extends JPanel{
     private final static int index2 = 2;
     //size of the graph
     private final static int size = 2000;
-
+    private final static int scale = 30;
     //variables
     private static boolean haveObstacle = true;
     private ArrayList <String[]> coordinates = new ArrayList <String[]> ();
@@ -62,7 +62,7 @@ public class Visualization extends JPanel{
         }
 
         if (haveObstacle){
-            divider.add(list.size() - 1);
+            divider.add(list.size());
         }
 
         listarray = (Double[])list.toArray(new Double[0]);
@@ -71,7 +71,7 @@ public class Visualization extends JPanel{
 
     //change the scale
     private double transfer(ArrayList <String[]> temp, int index, int position){
-       return Double.parseDouble(temp.get(index)[position]) * 50 + 300;
+       return Double.parseDouble(temp.get(index)[position]) * scale + 300;
     }
 
     //draw initial coordinate in white color and others in red color
@@ -86,7 +86,7 @@ public class Visualization extends JPanel{
             int ay = (int)transfer(coordinates, i, 1);
             g.drawOval(ax,ay,2,2);
 
-            g.drawString((ax-300)/50 + "," + (ay-300)/50, ax, ay);
+            g.drawString((ax-300)/scale + "," + (ay-300)/scale, ax, ay);
 //            g.drawString(".",ax,ay);
             g.setColor(Color.red);
         }
@@ -148,6 +148,7 @@ public class Visualization extends JPanel{
                     tempY = ay;
                 } else {
                     g.drawLine(tempX, tempY, ax, ay);
+                    g.drawString((ax-300)/scale + "," + (ay-300)/scale, ax, ay);
                     tempX = ax;
                     tempY = ay;
                 }
