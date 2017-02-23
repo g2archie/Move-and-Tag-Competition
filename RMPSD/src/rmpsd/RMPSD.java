@@ -22,7 +22,7 @@ public class RMPSD {
      // double[] coordinates={-1.5,1.5,-1,0,5,0,4.5,3.5,4.6,-3};
      // int[] index={-1};
      double[] coordinates={0.0, 1.0, 2.0, 0.0, 3.0, 5.0, 6.0, 2.0, 9.0, 0.0, 1.0, 2.0, 1.0, 4.0, 3.0, 4.0, 3.0, 2.0, 8.0, 1.0, 4.0, 1.0, 4.0, 4.0, 5.0, 2.0};
-     int[] index={10,18,25};
+     int[] index={10,18,21};
       rmp newrmp=new rmp(coordinates,index);
       //newrmp.findPath(0, 2);
       System.out.println(newrmp.getShortestDistance(0,4));
