@@ -1,5 +1,4 @@
 
-
 import javax.swing.*;
 import java.awt.*;
 import java.util.ArrayList;
@@ -9,17 +8,19 @@ import java.util.Random;
 public class Visualization extends JPanel{
     //users variables
     //path of the data
+    //For mac
 //    private final static String path = "/Users/fuxiaofeng/Desktop/questions.txt";
 //    private final static String path2 = "/Users/fuxiaofeng/Desktop/solutions.txt";
-
-    private final static String path = "E:\\questions.txt";
-    private final static String path2 = "E:\\solutions.txt";
+    //For windows
+    private final static String path = "E:\\Move-and-Tag-Competition\\questions.txt";
+    private final static String path2 = "E:\\Move-and-Tag-Competition\\solutions.txt";
     //selection of the data
-    private final static int index = 5;
-    private final static int index2 = 2;
+    private final static int questionnumber=30;
+    private final static int index =questionnumber - 1;
+    private final static int index2 = 5;
     //size of the graph
     private final static int size = 2000;
-
+    private final static int scale = 30;
     //variables
     private static boolean haveObstacle = true;
     private ArrayList <String[]> coordinates = new ArrayList <String[]> ();
@@ -31,6 +32,7 @@ public class Visualization extends JPanel{
     private ArrayList <Integer> divider =  new ArrayList<Integer>();
     private Double[] listarray;
     private Integer[] dividerarray;
+    private ArrayList <Double> a = new ArrayList<Double>();
 
     //initial Image
     public void paint(Graphics g) {
@@ -43,6 +45,9 @@ public class Visualization extends JPanel{
         for (int i = 0; i < coordinates.size(); i++){
             list.add(Double.parseDouble(coordinates.get(i)[0]));
             list.add(Double.parseDouble(coordinates.get(i)[1]));
+            a.add(Double.parseDouble(coordinates.get(i)[0]));
+            a.add(Double.parseDouble(coordinates.get(i)[1]));
+
         }
 
         if (haveObstacle){
@@ -70,7 +75,7 @@ public class Visualization extends JPanel{
 
     //change the scale
     private double transfer(ArrayList <String[]> temp, int index, int position){
-       return Double.parseDouble(temp.get(index)[position]) * 40 + 300;
+       return Double.parseDouble(temp.get(index)[position]) * scale + 300;
     }
 
     //draw initial coordinate in white color and others in red color
@@ -83,8 +88,9 @@ public class Visualization extends JPanel{
         for (int i = 0; i < coordinates.size(); i++){
             int ax = (int)transfer(coordinates, i, 0);
             int ay = (int)transfer(coordinates, i, 1);
-            g.setFont(getFont().deriveFont(20f));
             g.drawOval(ax,ay,2,2);
+
+            g.drawString((ax-300)/scale + "," + (ay-300)/scale, ax, ay);
 //            g.drawString(".",ax,ay);
             g.setColor(Color.red);
         }
@@ -113,7 +119,7 @@ public class Visualization extends JPanel{
                      tempY = ay;
                  }
 
-                 if (j == temp.size() - 1){
+                 if (j == temp.size()){
                      g.drawLine(ax,ay,initX,initY);
                  }
              }
@@ -146,6 +152,7 @@ public class Visualization extends JPanel{
                     tempY = ay;
                 } else {
                     g.drawLine(tempX, tempY, ax, ay);
+                    g.drawString((ax-300)/scale + "," + (ay-300)/scale, ax, ay);
                     tempX = ax;
                     tempY = ay;
                 }
@@ -213,6 +220,18 @@ public class Visualization extends JPanel{
 
         getSolutions(0, text2);
         solutions.add(solution);
+        double[] arr1 = a.stream().mapToDouble(Double::doubleValue).toArray();
+        double[] arr2= list.stream().mapToDouble(Double::doubleValue).toArray();
+        int[] arr3=new int[divider.size()];
+        for (int i=0; i < arr3.length; i++)
+        {
+            arr3[i] = divider.get(i).intValue();
+        }
+        FT newFT=new FT(arr1,arr2,arr3);
+        newFT.getResult();
+        /*System.out.println("coordinates:" + a);
+        System.out.println("all:" + list);
+        System.out.println("index:" + divider);*/
     }
 
     //encoding solution part
