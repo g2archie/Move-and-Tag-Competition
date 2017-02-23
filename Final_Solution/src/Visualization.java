@@ -15,7 +15,7 @@ public class Visualization extends JPanel{
     private final static String path = "E:\\Move-and-Tag-Competition\\questions.txt";
     private final static String path2 = "E:\\Move-and-Tag-Competition\\solutions.txt";
     //selection of the data
-    private final static int questionnumber=30;
+    private final static int questionnumber=3;
     private final static int index =questionnumber - 1;
     private final static int index2 = 5;
     //size of the graph

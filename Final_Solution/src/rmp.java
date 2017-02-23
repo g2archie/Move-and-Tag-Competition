@@ -184,10 +184,11 @@ public class rmp {
             }
             System.out.println();
         }
-
+        int lastnumber_1=0;
+        int lastnumber_2=0;
         for(i=0;i<robotnumber;i++)
         {
-
+            if(result[i][0]!=-1&&i>0) {System.out.print(";");}
             for(j=0;j<robotnumber;j++)
             {
                 if (result[i][j]==-1) {break;}
@@ -232,7 +233,7 @@ public class rmp {
 
                 }
             }
-            if(result[i][0]!=-1) System.out.print(";");
+            //if(result[i][0]!=-1) System.out.print(";");
         }
         System.out.println();
     }
