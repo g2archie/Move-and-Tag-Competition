@@ -97,7 +97,7 @@ public int isEdge(double x1,double y1,double x2,double y2)
 {
     for(int i=0;i<index_length-1;i++)
     {
-        for(int j=index[i];j<index[i+1]-1;j+=2)
+        for(int j=index[i];j<index[i+1]-2;j+=2)
         {
             if (j==index[i]){
                 if((x1==coordinates[j])&&(y1==coordinates[j+1])&&(x2==coordinates[index[i+1]-2])&&(y2==coordinates[index[i+1]-1]))
