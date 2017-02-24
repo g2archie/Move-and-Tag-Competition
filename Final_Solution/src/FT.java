@@ -160,8 +160,8 @@ public FT(double[] testarray,double[] coordinates,int[] index)
         for (int i=0;i<final1.size();i++){
             int temp3=((int[])final1.get(i))[0];
             int temp4=((int[])final1.get(i))[1];
-            System.out.print(temp3+",");
-            System.out.println(temp4);
+            //System.out.print(temp3+",");
+            //System.out.println(temp4);
         }
         newrmp.printResult(final1,totalnumber);
         //////最后返回final1这个Arraylist

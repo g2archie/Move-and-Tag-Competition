@@ -158,7 +158,7 @@ public class rmp {
         int result[][]=new int[robotnumber][robotnumber];
         int arraylength[]=new int[robotnumber];
         int position;
-        System.out.println("Arraylist size is "+size);
+        //System.out.println("Arraylist size is "+size);
         // System.out.println(robotnumber);
         for(i=0;i<robotnumber;i++)
         {
@@ -171,19 +171,19 @@ public class rmp {
         {
             robot=array.get(i)[0];
             move=array.get(i)[1];
-            System.out.println(robot+" "+move);
+           // System.out.println(robot+" "+move);
             position=arraylength[robot];
             result[robot][position]=move;
             arraylength[robot]++;
         }
-        for(i=0;i<robotnumber;i++)
+/*        for(i=0;i<robotnumber;i++)
         {
             for(j=0;j<robotnumber;j++)
             {
                 System.out.print(result[i][j]+ " ");
             }
             System.out.println();
-        }
+        }*/
         int lastnumber_1=0;
         int lastnumber_2=0;
         for(i=0;i<robotnumber;i++)

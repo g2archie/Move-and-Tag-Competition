@@ -17,7 +17,7 @@ public class Visualization extends JPanel{
     //selection of the data
     private final static int questionnumber=3;
     private final static int index =questionnumber - 1;
-    private final static int index2 = 5;
+    private final static int index2 = questionnumber+1;
     //size of the graph
     private final static int size = 2000;
     private final static int scale = 30;
@@ -228,6 +228,7 @@ public class Visualization extends JPanel{
             arr3[i] = divider.get(i).intValue();
         }
         FT newFT=new FT(arr1,arr2,arr3);
+        System.out.print(questionnumber+":");
         newFT.getResult();
         /*System.out.println("coordinates:" + a);
         System.out.println("all:" + list);
@@ -321,5 +322,6 @@ public class Visualization extends JPanel{
         frame.getContentPane().add(new Visualization());
         frame.setSize(size, size);
         frame.setVisible(true);
+        return ;
     }
 }
